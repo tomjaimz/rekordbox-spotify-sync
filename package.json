@@ -1,0 +1,14 @@
+{
+  "name": "rekordbox-spotify-sync",
+  "version": "0.0.1",
+  "description": "none",
+  "repository": "none",
+  "license": "MIT",
+  "dependencies": {
+    "bottleneck": "^2.19.2",
+    "music-metadata": "^4.2.0",
+    "remove-accents": "^0.4.2",
+    "xml2js": "^0.4.19",
+    "xmlbuilder": "^13.0.2"
+  }
+}

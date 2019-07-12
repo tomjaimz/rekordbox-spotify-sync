@@ -1,0 +1,8 @@
+node_modules
+.eslintrc.js
+.vscode
+rekordbox.xml
+spotify.xml
+token.json
+uris.json
+config.json
