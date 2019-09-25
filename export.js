@@ -19,7 +19,7 @@ const {
   REKORDBOX_XML_FILE_LOCATION,
   REKORDBOX_EXPORT_PLAYLIST_PREFIX,
   SPOTIFY_PLAYLIST_PREFIX,
-  SPOTIFY_URI_MP3_TAG,
+  SPOTIFY_URI_ID3_TAG,
   REKORDBOX_LOCATION_PREFIX,
   NODE_LOCATION_PREFIX,
   URIS_FILENAME,
@@ -77,11 +77,11 @@ const main = async () => {
       if (uris[filename] && !tracks[id].URI) {
         tracks[id].URI = uris[filename]
       }
-      if (!tracks[id].URI && SPOTIFY_URI_MP3_TAG) {
+      if (!tracks[id].URI && SPOTIFY_URI_ID3_TAG) {
         const metadata = await mm.parseFile(filename, { native: true })
         const tags = metadata.native['ID3v2.4'] || metadata.native['ID3v2.3']
         if (tags) {
-          const uri_tag = tags.find(v => v.id === SPOTIFY_URI_MP3_TAG)
+          const uri_tag = tags.find(v => v.id === SPOTIFY_URI_ID3_TAG)
           if (uri_tag) {
             uris[filename] = tracks[id].URI = uri_tag.value
             uriDB.set(uris)

@@ -1,0 +1,42 @@
+module.exports = {
+  // To export from Rekordbox to Spotify, you need to Export your Collection
+  // in XML format from Rekordbox.  This is an option in the File menu of
+  // rekordbox.  Supply the path as it would be read by node below
+  REKORDBOX_XML_FILE_LOCATION: '',
+
+  // Only playlists with the below prefix will be exported from Rekordbox
+  REKORDBOX_EXPORT_PLAYLIST_PREFIX: '[>]',
+
+  // The exported playlists will have the above prefix replaced with the below
+  // prefix in Spotify.  This is also what will be looked for in Spotify when
+  // importing back into Rekordbox.
+  SPOTIFY_PLAYLIST_PREFIX: '[-]',
+
+  // Playlists that are imported back into Spotify will have the following
+  // prefix
+  REKORDBOX_IMPORT_PLAYLIST_PREFIX: '[<]',
+
+  // The Spotify URI can be stored in an ID3 tag.
+  SPOTIFY_URI_ID3_TAG: '',
+
+  // Part of the Rekordbox file path may need to be replaced to satisfy Node,
+  // such as when you are using WSL on Windows
+  REKORDBOX_LOCATION_PREFIX: 'file://localhost/C:/',
+  NODE_LOCATION_PREFIX: '/mnt/c/',
+
+  // This is where the imported Spotify playlists will be stored.  You will
+  // then need to add this location as your 'rekordbox xml' path in your
+  // Rekordbox Settings (in Advanced > Database)
+  SPOTIFY_XML_FILE_LOCATION: './spotify.xml',
+
+  // This is your Spotify App ID and Secret
+  // You will also need to add http://localhost:8888/ as a redirect uri
+  CLIENT_ID: '',
+  CLIENT_SECRET: '',
+
+  // This is where your Spotify token will be stored.
+  TOKEN_FILENAME: './token.json',
+
+  // This is a simple local database of Spotify URIs, essentially a cache.
+  URIS_FILENAME: './uris.json',
+}
