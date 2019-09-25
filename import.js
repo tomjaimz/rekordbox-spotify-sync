@@ -1,8 +1,8 @@
 const fs = require('fs')
-if (!fs.existsSync('./config.json')) {
-  console.error('config.json missing.')
-  if (fs.existsSync('./config.json.sample')) {
-    console.error('Maybe you need to edit and rename config.json.sample?')
+if (!fs.existsSync('./config.js')) {
+  console.error('config.js missing.')
+  if (fs.existsSync('./config.js.sample')) {
+    console.error('Maybe you need to edit and rename config.js.sample?')
   }
   process.exit()
 }
@@ -31,7 +31,7 @@ const locationOf = uri => {
 
 const main = async () => {
   if (!SPOTIFY_XML_FILE_LOCATION) {
-    console.error('Missing SPOTIFY_XML_FILE_LOCATION in config.json')
+    console.error('Missing SPOTIFY_XML_FILE_LOCATION in config.js')
     return
   }
 

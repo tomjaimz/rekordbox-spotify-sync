@@ -17,7 +17,8 @@ module.exports = {
   REKORDBOX_IMPORT_PLAYLIST_PREFIX: '[<]',
 
   // The Spotify URI can be stored in an ID3 tag.
-  SPOTIFY_URI_ID3_TAG: '',
+  // I use TMED, you can replace this with an empty string to remove.
+  SPOTIFY_URI_ID3_TAG: 'TMED',
 
   // Part of the Rekordbox file path may need to be replaced to satisfy Node,
   // such as when you are using WSL on Windows

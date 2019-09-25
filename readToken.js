@@ -78,7 +78,7 @@ const getTokenFromUser = () =>
 const readToken = async () => {
   if (!CLIENT_ID || !CLIENT_SECRET) {
     console.log(
-      'You need a CLIENT_ID and a CLIENT_SECRET in the config.json.  Go to https://developer.spotify.com/dashboard/applications.'
+      'You need a CLIENT_ID and a CLIENT_SECRET in the config.js.  Go to https://developer.spotify.com/dashboard/applications.'
     )
   }
 

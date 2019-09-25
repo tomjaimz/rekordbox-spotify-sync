@@ -1,8 +1,8 @@
 const fs = require('fs')
-if (!fs.existsSync('./config.json')) {
-  console.error('config.json missing.')
-  if (fs.existsSync('./config.json.sample')) {
-    console.error('Maybe you need to edit and rename config.json.sample?')
+if (!fs.existsSync('./config.js')) {
+  console.error('config.js missing.')
+  if (fs.existsSync('./config.js.sample')) {
+    console.error('Maybe you need to edit and rename config.js.sample?')
   }
   process.exit()
 }
@@ -37,13 +37,15 @@ const playlistNode = (node, prefix, process = false) => {
       )
     }
   } else if (process) {
-    playlists[`${prefix + node.$.Name}`] = node.TRACK.map(({ $ }) => +$.Key)
+    if (+node.$.Entries > 0) {
+      playlists[`${prefix + node.$.Name}`] = node.TRACK.map(({ $ }) => +$.Key)
+    }
   }
 }
 
 const main = async () => {
   if (!REKORDBOX_XML_FILE_LOCATION) {
-    console.error('Missing REKORDBOX_XML_FILE_LOCATION in config.json')
+    console.error('Missing REKORDBOX_XML_FILE_LOCATION in config.js')
     return
   }
 
@@ -78,14 +80,18 @@ const main = async () => {
         tracks[id].URI = uris[filename]
       }
       if (!tracks[id].URI && SPOTIFY_URI_ID3_TAG) {
-        const metadata = await mm.parseFile(filename, { native: true })
-        const tags = metadata.native['ID3v2.4'] || metadata.native['ID3v2.3']
-        if (tags) {
-          const uri_tag = tags.find(v => v.id === SPOTIFY_URI_ID3_TAG)
-          if (uri_tag) {
-            uris[filename] = tracks[id].URI = uri_tag.value
-            uriDB.set(uris)
+        if (fs.existsSync(filename)) {
+          const metadata = await mm.parseFile(filename, { native: true })
+          const tags = metadata.native['ID3v2.4'] || metadata.native['ID3v2.3']
+          if (tags) {
+            const uri_tag = tags.find(v => v.id === SPOTIFY_URI_ID3_TAG)
+            if (uri_tag) {
+              uris[filename] = tracks[id].URI = uri_tag.value
+              uriDB.set(uris)
+            }
           }
+        } else {
+          console.log('Track missing:', filename)
         }
       }
 
