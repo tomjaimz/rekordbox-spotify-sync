@@ -1,6 +1,6 @@
 # rekordbox-spotify-sync
 
-Export playlists from Spotify to Rekordbox, and import them back from Spotify to Rekordbox.
+Export playlists from Rekordbox to Spotify, and import them back from Spotify to Rekordbox.
 
 ## Installation
 
