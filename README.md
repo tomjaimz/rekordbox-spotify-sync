@@ -14,8 +14,8 @@ You will need to:
 
 1. Edit the `config.js.sample` file, and save it as `config.js`. You will need to add or verify the values for:
 
-- REKORDBOX_XML_FILE_LOCATION
-- REKORDBOX_LOCATION_PREFIX
+- REKORDBOX_XML_FILE_LOCATION (Where you saved the exported library from step 3)
+- REKORDBOX_LOCATION_PREFIX 
 - NODE_LOCATION_PREFIX
-- CLIENT_ID
-- CLIENT_SECRET
+- CLIENT_ID (From your Spotify app you created in Step 2)
+- CLIENT_SECRET (From your Spotify app you created in Step 2)
